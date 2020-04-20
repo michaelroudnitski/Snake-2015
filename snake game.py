@@ -6,10 +6,12 @@
 #               It demonstrates how to move and lengthen the snake. 
 #########################################
 
-import pygame
-pygame.init()
 import time
 from random import randint
+
+import pygame
+
+pygame.init()
 
 intro = True
 inPlay = False
@@ -62,7 +64,7 @@ def redraw_screen():
     scoreText = font.render(str(score - 1), 1, WHITE)
     screen.blit(scoreText, (10, 10))
     #Timer Text
-    timerText = font.render(str(gameTimer/1000), 1, timerColor)
+    timerText = font.render(str(int(gameTimer/1000)), 1, timerColor)
     screen.blit(timerText, (750, 10))
 
     for i in range(len(segx)):                                                              #draw snake
@@ -77,7 +79,7 @@ def redraw_screen():
 #---------------------------------------#
 # the main program begins here          #
 #---------------------------------------#
-FPS = 60
+FPS = 120
 appleSound = pygame.mixer.Sound('PickupCoin.wav')
 appleSound.set_volume(8)
 
@@ -89,9 +91,9 @@ startButtonHover = pygame.image.load("startHover.jpg")
 exitButton = pygame.image.load("exit.jpg")
 exitButtonHover = pygame.image.load("exitHover.jpg")
 
-print "Use the arrow keys."
-print "You have 10 seconds to collect an apple"
-print "Hit ESC to end the program."
+print("Use the arrow keys.")
+print("You have 10 seconds to collect an apple")
+print("Hit ESC to end the program.")
 enemyW = 30
 enemyH = 30
 exitButtonX = 500
@@ -246,5 +248,5 @@ while inPlay:
     redraw_screen()
     pygame.time.delay(difficulty)
     
-print "Your score was", score - 1
+print("Your score was", score - 1)
 pygame.quit()                           # always quit pygame when done!
